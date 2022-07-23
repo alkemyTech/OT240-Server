@@ -6,7 +6,10 @@ const ROLES_LIST = require('../../config/rolesList');
 
 const newsController = require('../../controllers/news.controller');
 
-router.route('/').post(verifyRoles(ROLES_LIST.Admin), newsController.postNew);
+//@route    POST /api/news
+//@desc     Post new entry of type: "news"
+//@access   Private (Admin)
+router.post('/', verifyRoles(ROLES_LIST.Admin), newsController.postNew);
 
 //@route    PUT /api/news
 //@desc     Actualizar una novedad existente
