@@ -16,12 +16,7 @@ const fieldValidations = [
 //@desc creates new activity. Checks 'name' and 'content' fields to not be empty.
 //@access Private
 
-router.post(
-  '/',
-  // verifyRoles(ROLES_LIST.Admin),
-  fieldValidations,
-  postActivities
-);
+router.post('/', verifyRoles(ROLES_LIST.Admin), fieldValidations, postActivities);
 
 //@type PUT
 //@route /api/activities

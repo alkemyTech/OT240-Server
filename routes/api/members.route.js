@@ -50,10 +50,6 @@ router.put(
 //@route    DELETE /api/members
 //@desc     Valida que un miembro existe por su id y lo elimina, caso contrario devolver un error
 //@access   Private
-router.delete(
-  '/:id',
-  // verifyRoles(ROLES_LIST.Admin),
-  deleteMember
-);
+router.delete('/:id', verifyRoles(ROLES_LIST.Admin), deleteMember);
 
 module.exports = router;
