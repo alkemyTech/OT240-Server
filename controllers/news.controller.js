@@ -1,4 +1,10 @@
-const { postNewService, editNews, newsExists, retrieveNews } = require('../services/news.service');
+const {
+  postNewService,
+  editNews,
+  newsExists,
+  retrieveNews,
+  destroyNew,
+} = require('../services/news.service');
 const { validationResult } = require('express-validator');
 
 const getNews = async (req, res) => {
@@ -26,6 +32,16 @@ const postNew = async (req, res) => {
     return res.json(result);
   } catch (err) {
     return res.status(500).json({ errors: err.message });
+  }
+};
+
+const deleteNew = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deleted = await destroyNew(id);
+    return deleted ? res.json(deleted) : res.sendStatus(204);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
   }
 };
 
@@ -59,4 +75,4 @@ const putNews = async (req, res) => {
   }
 };
 
-module.exports = { postNew, putNews, getNews };
+module.exports = { postNew, putNews, getNews, deleteNew };
