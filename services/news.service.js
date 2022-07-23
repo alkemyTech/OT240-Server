@@ -1,5 +1,8 @@
-const postNewService = async (postBody) => {
-  return postBody;
+const db = require('../models/index');
+
+const postNewService = async (newBody) => {
+  const postedNew = await db.Entry.create(newBody);
+  return postedNew;
 };
 
 const editNews = async ({ id, content, image, categoryId, type, updatedAt, deleteAt }) => {
