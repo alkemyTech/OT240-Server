@@ -5,9 +5,19 @@ const postNew = async (req, res) => {
   if (!req?.body) {
     return res.status(404).json({ errors: 'request body missing' });
   }
-  req.body.type = 'news';
-  const result = await postNewService(req.body);
-  res.json(result);
+  const body = {
+    ...req.body,
+    type: 'news',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
+  try {
+    const result = await postNewService(body);
+    return res.json(result);
+  } catch (err) {
+    return res.status(500).json({ errors: err.message });
+  }
 };
 
 const putNews = async (req, res) => {
