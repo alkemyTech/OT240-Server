@@ -26,7 +26,7 @@ router.delete('/:id', verifyRoles(ROLES_LIST.Admin), newsController.deleteNew);
 //@access   Private
 router.put(
   '/:id',
-  //   verifyRoles(ROLES_LIST.Admin),
+  verifyRoles(ROLES_LIST.Admin),
   [check('name', 'name must be string').isString()],
   [check('content', 'content must be string').isString()],
   [check('image', 'image must be string').isString()],
