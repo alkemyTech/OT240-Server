@@ -16,6 +16,11 @@ router.get('/', verifyRoles(ROLES_LIST.Admin), newsController.getNews);
 //@access   Private (Admin)
 router.post('/', verifyRoles(ROLES_LIST.Admin), newsController.postNew);
 
+//@route    DELETE /api/news/:id
+//@desc     Delete entry of type: "news" with id
+//@access   Private (Admin)
+router.delete('/:id', verifyRoles(ROLES_LIST.Admin), newsController.deleteNew);
+
 //@route    PUT /api/news
 //@desc     Actualizar una novedad existente
 //@access   Private
