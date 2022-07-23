@@ -13,6 +13,12 @@ const postNewService = async (newBody) => {
   return postedNew;
 };
 
+const destroyNew = async (id) => {
+  const savedInDb = await db.Entry.findOne({ where: { id, type: 'news' } });
+  await db.Entry.destroy({ where: { id } });
+  return savedInDb;
+};
+
 const editNews = async ({ id, content, image, categoryId, type, updatedAt, deleteAt }) => {
   const news = await db.Entry.update(
     { content, image, categoryId, type, updatedAt, deleteAt },
@@ -26,4 +32,4 @@ const newsExists = async ({ id }) => {
   return newsExists ? newsExists : null;
 };
 
-module.exports = { postNewService, editNews, newsExists, retrieveNews };
+module.exports = { postNewService, editNews, newsExists, retrieveNews, destroyNew };
