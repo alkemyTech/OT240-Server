@@ -15,14 +15,14 @@ const image = 'https://image-bucket.com/test-image.png';
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      'Testimonials',
+      'testimonials',
       names.map((name) => ({ name, content, image })),
       {}
     );
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Testimonials', null, {});
+    await queryInterface.bulkDelete('testimonials', null, {});
   },
 };
 
