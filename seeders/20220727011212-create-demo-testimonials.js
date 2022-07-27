@@ -26,8 +26,8 @@ module.exports = {
   },
 };
 
-// To fill the table with mock testimonials run:
+// To fill the table with mock data run:
 // npx sequelize-cli db:seed --seed 20220727011212-create-demo-testimonials.js
 
-// To empty the table "testimonials" run:
+// To empty the table run:
 // npx sequelize-cli db:seed:undo --seed 20220727011212-create-demo-testimonials.js
