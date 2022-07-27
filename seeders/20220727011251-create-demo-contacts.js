@@ -1,6 +1,5 @@
 'use strict';
 
-const createdAt = new Date();
 const names = [
   'Juana Molina',
   'Pedro Sanchez',
@@ -18,7 +17,7 @@ module.exports = {
         name,
         phone: Math.floor(Math.random() * 999999999) + 111111111,
         email: `${name.replace(' ', '_')}@gmail.com`,
-        message: `Hola, soy ${name} y me gustaría saber mas acerca de la ONG. Estoy interesade en participar y colaborar con la causa. Espero protna respuesta. Saludos`,
+        message: `Hola, soy ${name} y me gustaría saber mas acerca de la ONG. Estoy interesade en participar y colaborar con la causa. Espero pronta respuesta. Saludos`,
       })),
       {}
     );

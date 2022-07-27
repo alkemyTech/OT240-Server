@@ -1,6 +1,6 @@
 'use strict';
 
-const orders = [1, 2, 3, 4, 5, 5, 6, 7, 8, 9];
+const orders = [1, 2, 3];
 const createdAt = new Date();
 
 module.exports = {
@@ -9,9 +9,9 @@ module.exports = {
       'slides',
       orders.map((order) => ({
         order,
-        imageUrl: `https://image-bucket.com/image-${Math.floor(Math.random() * 11)}.jpg`,
+        imageUrl: `http://localhost:3000/fotos/Foto%20${order}.jpg`,
         text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis assumenda eum, illum harum accusamus corrupti similique illo id reiciendis necessitatibus doloremque voluptatum rem consectetur ex saepe alias at? Fuga, odit.',
-        organizationId: Math.floor(Math.random() * 5) + 1,
+        organizationId: 123,
         createdAt,
         updatedAt: createdAt,
       })),
