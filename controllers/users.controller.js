@@ -1,6 +1,6 @@
 
 const db = require('../models/index');
-const { encryptPassword } = require('../services/auth.service');
+const { encryptPassword, generateToken } = require('../services/auth.service');
 const { getAllUsers, getOneUserById, getUserDataFromToken } = require('../services/users.service');
 
 const getUsers = async (req, res) => {
@@ -72,14 +72,14 @@ const userUpdate = async (req, res) => {
     };
 
     if ( userDataToken.UserInfo.id == user.id) {
-
+      const newToken = generateToken(userData);
       try {
         db.User.update(user,
           {where: {id: req.params.id}}
         );
-        res.status(200).json(user)
+        res.status(200).json({token: newToken ,user});
       } catch (error) {
-        res.status(500).json({error})
+        res.status(500).json({error});
       };
       
     } else {
