@@ -1,8 +1,13 @@
 const { validationResult } = require('express-validator');
-const { addActivity, findActivity, updateActivity, findAllActivities, destroyActivity } = require('../services/activities.service.js');
+const {
+  addActivity,
+  findActivity,
+  updateActivity,
+  findAllActivities,
+  destroyActivity,
+} = require('../services/activities.service.js');
 
-const getAllActivities = async(req, res) => {
-
+const getAllActivities = async (req, res) => {
   try {
     const activities = await findAllActivities();
     res.status(200).json(activities);
@@ -12,15 +17,15 @@ const getAllActivities = async(req, res) => {
 };
 
 const getActivityById = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   try {
     const activity = await findActivity(id);
-    if(!activity){
-      return res.status(404).json({errors: `Activity with id ${id} not found`})
+    if (!activity) {
+      return res.status(404).json({ errors: `Activity with id ${id} not found` });
     }
-    res.status(200).json(activity);     
+    res.status(200).json(activity);
   } catch (error) {
-    res.status(500).json({ errors: error.message });  
+    res.status(500).json({ errors: error.message });
   }
 };
 
